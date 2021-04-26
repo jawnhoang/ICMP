@@ -51,7 +51,7 @@ def receiveOnePing(mySocket, ID, timeout, destAddr):
         print("Header from IP packet:", type, code, checksum, packetID, sequence)
         if packetID == ID:
             bytes = struct.calcsize("d")
-            sendingTime = struct.unpack("d", reckPacket[28:28 + bytes])[0]
+            sendingTime = struct.unpack("d", recPacket[28:28 + bytes])[0]
             rtt = timeReceived - sendingTime
             print("RTT: ")
             return rtt
@@ -105,7 +105,7 @@ def ping(host, timeout=1):
     # timeout=1 means: If one second goes by without a reply from the server,
     #the client assumes that either the client's ping or the server's pong is lost
     dest = gethostbyname(host)
-    print("Pinging "+ dest + " using Python:")
+    print("\nPinging "+ dest + " using Python by John Hoang:")
     print("")
     # Send ping requests to a server separated by approximately one second
     while 1 :
@@ -115,5 +115,6 @@ def ping(host, timeout=1):
     return delay
 
 
-ping("google.com")
-ping("192.168.52.1")
+#ping("google.com")
+print()
+ping("youtube.com")
